@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
+import 'config.dart';
 import 'screen.dart';
-import 'screen_config.dart';
 
 class ScreenAwareProvider extends StatefulWidget {
   const ScreenAwareProvider({Key key, this.child, this.builder, this.config}) : super(key: key);
