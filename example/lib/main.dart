@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dpi_aware/flutter_dpi_aware.dart';
+import 'package:flutter_screen_aware/flutter_screen_aware.dart';
 
 void main() => runApp(MyApp());
 

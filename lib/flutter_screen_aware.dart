@@ -1,4 +1,4 @@
-library flutter_dpi_aware;
+library flutter_screen_aware;
 
 export 'src/extensions.dart';
 export 'src/screen.dart';

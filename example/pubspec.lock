@@ -62,7 +62,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_dpi_aware:
+  flutter_screen_aware:
     dependency: "direct main"
     description:
       path: ".."

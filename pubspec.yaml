@@ -1,8 +1,8 @@
-name: flutter_dpi_aware
+name: flutter_screen_aware
 description: A new Flutter package project.
 version: 0.0.1
 author: Jeremiah Ogbomo <jeremiahogbomo@gmail.com>
-homepage: https://github.com/jogboms/flutter_dpi_aware
+homepage: https://github.com/jogboms/flutter_screen_aware
 
 environment:
   sdk: ">=2.6.0-dev <3.0.0"
