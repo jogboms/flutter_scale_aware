@@ -1,0 +1,19 @@
+name: example
+description: A new Flutter project.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.6.0-dev <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_screen_aware:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
