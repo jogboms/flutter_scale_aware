@@ -1,0 +1,17 @@
+name: flutter_dpi_aware
+description: A new Flutter package project.
+version: 0.0.1
+author: Jeremiah Ogbomo <jeremiahogbomo@gmail.com>
+homepage: https://github.com/jogboms/flutter_dpi_aware
+
+environment:
+  sdk: ">=2.6.0-dev <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mfsao: ^0.1.3
