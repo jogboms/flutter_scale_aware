@@ -1,6 +1,6 @@
 import 'dart:math' show min;
 
-import 'package:flutter/foundation.dart' show required;
+import 'package:flutter/foundation.dart' show required, visibleForTesting;
 import 'package:flutter/rendering.dart' show Size;
 
 import 'config.dart';
@@ -34,6 +34,19 @@ class Screen {
 
   Screen._({this.size, this.pixelRatio, this.textScaleFactor, this.config});
 
+  @visibleForTesting
+  static void reset() => _instance = null;
+
+  @visibleForTesting
+  static Screen copyWith({Size size, double pixelRatio, double textScaleFactor, ScreenConfig config}) {
+    return Screen.create(
+      size: size ?? _instance.size,
+      pixelRatio: pixelRatio ?? _instance.pixelRatio,
+      textScaleFactor: textScaleFactor ?? _instance.textScaleFactor,
+      config: config ?? _instance.config,
+    );
+  }
+
   /// Physical size of the device
   final Size size;
 
@@ -58,7 +71,7 @@ class Screen {
   double dp(num dimension) => dimension * size.shortestSide / min(config.width, config.height);
 
   /// Relative to the font-size setting of the actual device
-  double sp(num fontSize) => config.allowFontScaling ? fontSize.toDouble() : fontSize / textScaleFactor;
+  double sp(num fontSize) => config.allowFontScaling ? fontSize / textScaleFactor : fontSize.toDouble();
 
   @override
   String toString() => '$runtimeType('

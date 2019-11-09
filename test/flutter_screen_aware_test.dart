@@ -10,7 +10,13 @@ void main() {
       });
 
       testWidgets('without config', (WidgetTester tester) async {
-        expect(ScreenAwareProvider(child: Text("Hurray")).config, isInstanceOf<ScreenConfig>());
+        final instance = ScreenAwareProvider(child: Text("Hurray"));
+        expect(instance.config, isInstanceOf<ScreenConfig>());
+        expect(instance.config, const ScreenConfig());
+      });
+
+      testWidgets('with null config', (WidgetTester tester) async {
+        expect(() => ScreenAwareProvider(child: Text("Hurray"), config: null), throwsAssertionError);
       });
 
       group("with builder", () {
@@ -64,10 +70,13 @@ void main() {
     });
 
     group("on setup", () {
+      setUp(() => Screen.reset());
+
       testWidgets('without provider', (WidgetTester tester) async {
         await tester.pumpWidget(MaterialApp(home: Text('Hurray')));
         expect(() => Screen(), throwsException);
       });
+
       testWidgets('without provider but with Screen.create', (WidgetTester tester) async {
         await tester.pumpWidget(MaterialApp(home: Text('Hurray')));
         final window = tester.binding.window;
@@ -81,6 +90,100 @@ void main() {
         expect(Screen().pixelRatio, window.devicePixelRatio);
         expect(Screen().textScaleFactor, window.textScaleFactor);
         expect(Screen().config, const ScreenConfig());
+      });
+    });
+  });
+
+  group("Unit tests", () {
+    group("on ScreenConfig", () {
+      test('with defaults', () async {
+        final instance = ScreenConfig();
+        expect(instance.width, 414.0);
+        expect(instance.height, 896.0);
+        expect(instance.allowFontScaling, true);
+      });
+
+      test('with parameters', () async {
+        final instance = ScreenConfig(width: 1, height: 2, allowFontScaling: false);
+        expect(instance.width, 1);
+        expect(instance.height, 2);
+        expect(instance.allowFontScaling, false);
+      });
+    });
+
+    group("on Screen", () {
+      setUpAll(() {
+        Screen.create(
+          size: const Size(100, 200),
+          pixelRatio: 2,
+          textScaleFactor: 2,
+          config: const ScreenConfig(width: 200, height: 400),
+        );
+      });
+
+      tearDownAll(() => Screen.reset());
+
+      test("with any null parameters", () async {
+        expect(
+          () => Screen.create(size: null, pixelRatio: null, textScaleFactor: null, config: null),
+          throwsAssertionError,
+        );
+        expect(
+          () => Screen.create(size: Size.zero, pixelRatio: null, textScaleFactor: 1, config: const ScreenConfig()),
+          throwsAssertionError,
+        );
+        expect(
+          () => Screen.create(size: Size.zero, pixelRatio: 1, textScaleFactor: null, config: const ScreenConfig()),
+          throwsAssertionError,
+        );
+        expect(
+          () => Screen.create(size: Size.zero, pixelRatio: 1, textScaleFactor: 1, config: null),
+          throwsAssertionError,
+        );
+      });
+
+      test('on single instance', () async {
+        expect(Screen(), Screen());
+      });
+
+      test('on toString', () async {
+        expect(Screen().toString(), "Screen(textScaleFactor: 2.0, pixelRatio: 2.0, width: 50.0, height: 100.0)");
+      });
+
+      group("on extensions", () {
+        test('with dp', () async {
+          expect(1.dp, 0.25);
+          expect(0.5.dp, 0.125);
+        });
+
+        test('with vh', () async {
+          expect(1.vh, 0.25);
+          expect(0.5.vh, 0.125);
+        });
+
+        test('with vw', () async {
+          expect(1.vw, 0.25);
+          expect(0.5.vw, 0.125);
+        });
+
+        group('on sp', () {
+          test('with scaling', () async {
+            expect(1.sp, 0.5);
+            expect(0.5.sp, 0.25);
+          });
+
+          test('without scaling', () async {
+            Screen.copyWith(
+              config: const ScreenConfig(width: 200, height: 400, allowFontScaling: false),
+            );
+            expect(1.sp, 1);
+            expect(0.5.sp, 0.5);
+          });
+        });
+      });
+
+      test('on copyWith', () async {
+        expect(Screen.copyWith(config: null), Screen());
       });
     });
   });
