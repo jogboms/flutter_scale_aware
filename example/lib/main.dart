@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 }
 
 class _MyHomePage extends StatelessWidget {
-  _MyHomePage({Key key, this.title}) : super(key: key);
+  const _MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
