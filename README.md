@@ -1,3 +1,5 @@
+# NOT ADVISED FOR PRODUCTION YET. API AND USAGE IS SUBJECT TO CHANGE
+
 # 🎗 Flutter Screen-Aware
 
 [![Build Status - Travis](https://travis-ci.org/jogboms/flutter_screen_aware.svg?branch=master)](https://travis-ci.org/jogboms/flutter_screen_aware) [![codecov](https://codecov.io/gh/jogboms/flutter_screen_aware/branch/master/graph/badge.svg)](https://codecov.io/gh/jogboms/flutter_screen_aware)
