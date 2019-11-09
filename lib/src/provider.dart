@@ -1,10 +1,17 @@
 import 'package:flutter/widgets.dart';
 
+import 'config.dart';
 import 'screen.dart';
-import 'screen_config.dart';
 
 class ScreenAwareProvider extends StatefulWidget {
-  const ScreenAwareProvider({Key key, this.child, this.builder, this.config}) : super(key: key);
+  const ScreenAwareProvider({
+    Key key,
+    this.child,
+    this.builder,
+    this.config = const ScreenConfig(),
+  })  : assert(config != null, 'config cannot be null'),
+        assert(!(builder == null && child == null), 'You should specify either a builder or a child'),
+        super(key: key);
 
   final Widget child;
   final ValueWidgetBuilder<Screen> builder;
