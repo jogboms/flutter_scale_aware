@@ -2,6 +2,8 @@
 
 [![Build Status - Travis](https://travis-ci.org/jogboms/flutter_screen_aware.svg?branch=master)](https://travis-ci.org/jogboms/flutter_screen_aware) [![codecov](https://codecov.io/gh/jogboms/flutter_screen_aware/branch/master/graph/badge.svg)](https://codecov.io/gh/jogboms/flutter_screen_aware)
 
+Create device-independent and percentage-based layout with a bit more ease. Powered by extensions. 
+
 ## 🎖 Installing
 
 ```yaml
@@ -16,7 +18,7 @@ dependencies:
 import 'package:flutter_screen_aware/flutter_screen_aware.dart';
 ```
 
-## 🎮 Tease
+## 🎮 How To Use
 
 ```dart
 import 'package:flutter/material.dart';
@@ -61,6 +63,45 @@ class DemoPage extends StatelessWidget {
 ```
 
 For more info, please, refer to the `main.dart` in the example.
+
+## 📷 Screenshots
+
+<table>
+  <tr>
+    <td align="center">Portrait</td>
+    <td align="center">Landscape</td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/jogboms/flutter_screen_aware/master/screenshots/s8-portrait.png" width="250px">
+      <br/><strong>Samung S8</strong>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/jogboms/flutter_screen_aware/master/screenshots/s8-landscape.png" width="600px">
+      <br/><strong>Samung S8</strong>
+    </td>
+   </tr>
+   <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/jogboms/flutter_screen_aware/master/screenshots/xsmax-portrait.png" width="250px">
+      <br/><strong>iPhone XS Max</strong>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/jogboms/flutter_screen_aware/master/screenshots/xsmax-landscape.png" width="600px">
+      <br/><strong>iPhone XS Max</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/jogboms/flutter_screen_aware/master/screenshots/ipad-portrait.png" width="250px">
+      <br/><strong>iPad Pro 11-in</strong>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/jogboms/flutter_screen_aware/master/screenshots/ipad-landscape.png" width="600px">
+      <br/><strong>iPad Pro 11-in</strong>
+    </td>
+  </tr>
+</table>
 
 ## 🐛 Bugs/Requests
 
