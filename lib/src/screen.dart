@@ -18,7 +18,7 @@ class Screen {
     @required Size size,
     @required double pixelRatio,
     @required double textScaleFactor,
-    ScreenConfig config = const ScreenConfig(),
+    @required ScreenConfig config,
   }) {
     assert(size != null);
     assert(pixelRatio != null);
