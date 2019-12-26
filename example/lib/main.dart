@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_aware/flutter_screen_aware.dart';
+import 'package:flutter_scale_aware/flutter_scale_aware.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ScreenAwareProvider(
-      config: ScreenConfig(),
-      builder: (_, screen, __) => MaterialApp(
+    return ScaleAware(
+      config: ScaleConfig(),
+      child: MaterialApp(
         title: 'Demo',
         theme: ThemeData.dark(),
-        home: _MyHomePage(title: '${screen.size.width} x ${screen.size.height}'),
+        home: _MyHomePage(title: 'Hello'),
       ),
-//      child: MaterialApp(
-//        title: 'Demo',
-//        theme: ThemeData.dark(),
-//        home: _MyHomePage(title: '${Screen().size.width} x ${Screen().size.height}'),
-//      ),
     );
   }
 }
@@ -32,41 +27,33 @@ class _MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 7.dp),
+        padding: EdgeInsets.symmetric(horizontal: context.scale(7)),
         child: Center(
           child: Column(
             children: <Widget>[
-              SizedBox(height: 16.dp),
+              SizedBox(height: context.scale(16)),
               Text(
-                'Designed at ${Screen().config.width} x ${Screen().config.height}',
-                style: TextStyle(fontSize: 16.sp),
+                'Designed at ${ScaleAware.of(context).width} x ${ScaleAware.of(context).height}',
+                style: TextStyle(fontSize: context.fontScale(16)),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 16.dp),
-              _Boxes(size: Size.square(100.dp), color: Colors.red, label: ["100dp", "100dp"]),
-              SizedBox(height: 16.dp),
-              _Boxes(size: Size(100.vw, 100.vh), color: Colors.green, label: ["100vw", "100vh"]),
-              SizedBox(height: 16.dp),
+              SizedBox(height: context.scale(16)),
+              _Boxes(size: Size.square(context.scale(100)), color: Colors.red, label: ["100dp", "100dp"]),
+              SizedBox(height: context.scale(16)),
               _Boxes(size: Size.square(100), color: Colors.blue, label: ["100", "100"]),
-              SizedBox(height: 16.dp),
+              SizedBox(height: context.scale(16)),
               Text(
                 'The text is fixed at 24',
                 style: TextStyle(fontSize: 24),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 16.dp),
+              SizedBox(height: context.scale(16)),
               Text(
-                'The text is flexible at 24.sp',
-                style: TextStyle(fontSize: 24.sp),
+                'The text is flexible at 24',
+                style: TextStyle(fontSize: context.fontScale(24)),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 16.dp),
-              Text(
-                Screen().toString(),
-                style: TextStyle(fontSize: 14.sp),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 48.dp),
+              SizedBox(height: context.scale(48)),
             ],
           ),
         ),
@@ -94,7 +81,7 @@ class _Boxes extends StatelessWidget {
           child: Center(
             child: Text(
               label.join("\nx\n"),
-              style: TextStyle(fontSize: 14.sp),
+              style: TextStyle(fontSize: context.fontScale(14)),
               textAlign: TextAlign.center,
             ),
           ),
