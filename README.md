@@ -1,8 +1,8 @@
-# NOT ADVISED FOR PRODUCTION YET. API AND USAGE IS SUBJECT TO CHANGE
+# 🎗 Flutter Scale-Aware
 
-# 🎗 Flutter Screen-Aware
+### NOT ADVISED FOR PRODUCTION YET. API AND USAGE IS SUBJECT TO CHANGE
 
-[![Build Status - Travis](https://travis-ci.org/jogboms/flutter_screen_aware.svg?branch=master)](https://travis-ci.org/jogboms/flutter_screen_aware) [![codecov](https://codecov.io/gh/jogboms/flutter_screen_aware/branch/master/graph/badge.svg)](https://codecov.io/gh/jogboms/flutter_screen_aware)
+[![Build Status - Travis](https://travis-ci.org/jogboms/flutter_scale_aware.svg?branch=master)](https://travis-ci.org/jogboms/flutter_scale_aware) [![codecov](https://codecov.io/gh/jogboms/flutter_scale_aware/branch/master/graph/badge.svg)](https://codecov.io/gh/jogboms/flutter_scale_aware)
 
 Create device-independent and percentage-based layout with a bit more ease. Powered by extensions. 
 
@@ -10,33 +10,33 @@ Create device-independent and percentage-based layout with a bit more ease. Powe
 
 ```yaml
 dependencies:
-  flutter_screen_aware: 
-    git: https://github.com/jogboms/flutter_screen_aware.git
+  flutter_scale_aware: 
+    git: https://github.com/jogboms/flutter_scale_aware.git
 ```
 
 ### ⚡️ Import
 
 ```dart
-import 'package:flutter_screen_aware/flutter_screen_aware.dart';
+import 'package:flutter_scale_aware/flutter_scale_aware.dart';
 ```
 
 ## 🎮 How To Use
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:flutter_screen_aware/flutter_screen_aware.dart';
+import 'package:flutter_scale_aware/flutter_scale_aware.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ScreenAwareProvider(
-      config: ScreenConfig(),
-      builder: (_, screen, child) => MaterialApp(
+    return ScaleAwareProvider(
+      config: ScaleConfig(),
+      child: MaterialApp(
         title: 'Demo',
         theme: ThemeData.dark(),
-        home: DemoPage(title: '${screen.size.width} x ${screen.size.height}'),
+        home: DemoPage(title: 'Hello'),
       ),
     );
   }
@@ -53,10 +53,10 @@ class DemoPage extends StatelessWidget {
       appBar: AppBar(title: Text(title)),
       body: Center(
         child: Container(
-          height: 2.dp,
-          width: 14.5.vw,
+          height: context.scale(2),
+          width: context.scale(14.5),
           color: Color.red,
-          child: Text("Hello World", style: TextStyle(fontSize: 16.sp)),
+          child: Text("Hello World", style: TextStyle(fontSize: context.fontScale(16))),
         ),
       ),
     );
@@ -65,45 +65,6 @@ class DemoPage extends StatelessWidget {
 ```
 
 For more info, please, refer to the `main.dart` in the example.
-
-## 📷 Screenshots
-
-<table>
-  <tr>
-    <td align="center">Portrait</td>
-    <td align="center">Landscape</td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/jogboms/flutter_screen_aware/master/screenshots/s8-portrait.png" width="250px">
-      <br/><strong>Samung S8</strong>
-    </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/jogboms/flutter_screen_aware/master/screenshots/s8-landscape.png" width="600px">
-      <br/><strong>Samung S8</strong>
-    </td>
-   </tr>
-   <tr>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/jogboms/flutter_screen_aware/master/screenshots/xsmax-portrait.png" width="250px">
-      <br/><strong>iPhone XS Max</strong>
-    </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/jogboms/flutter_screen_aware/master/screenshots/xsmax-landscape.png" width="600px">
-      <br/><strong>iPhone XS Max</strong>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/jogboms/flutter_screen_aware/master/screenshots/ipad-portrait.png" width="250px">
-      <br/><strong>iPad Pro 11-in</strong>
-    </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/jogboms/flutter_screen_aware/master/screenshots/ipad-landscape.png" width="600px">
-      <br/><strong>iPad Pro 11-in</strong>
-    </td>
-  </tr>
-</table>
 
 ## 🐛 Bugs/Requests
 

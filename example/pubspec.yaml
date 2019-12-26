@@ -8,7 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_screen_aware:
+  flutter_scale_aware:
     path: ../
 
 dev_dependencies:

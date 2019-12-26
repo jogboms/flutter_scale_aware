@@ -1,15 +1,17 @@
-import 'screen.dart';
+import 'package:flutter/widgets.dart';
 
-extension ScreenAwareExtensions<T extends num> on T {
-  /// Device-independent pixels. Where One pixel on a 160dpi screen, and equals two pixels for a 320dpi screen.
-  double get dp => Screen()?.dp(this) ?? toDouble();
+import 'scale.dart';
+import 'scale_aware.dart';
 
-  /// Relative to 1% of the height of the viewport (device window size). If the viewport is 800px high, 1vh = 8px.
-  double get vh => Screen()?.vh(this) ?? toDouble();
+extension BuildContextExtensions on BuildContext {
+  Scale get _scale {
+    final data = MediaQuery.of(this);
+    return Scale(size: data.size, textScaleFactor: data.textScaleFactor, config: ScaleAware.of(this));
+  }
 
-  /// Relative to 1% of the width of the viewport (device window size). If the viewport is 500px wide, 1vw = 5px.
-  double get vw => Screen()?.vw(this) ?? toDouble();
+  /// Pixels scaled per device from design. Where One pixel on a 160px screen equals two pixels on a 320px screen.
+  double scale(num width) => _scale.scale(width);
 
   /// Relative to the font-size setting of the actual device
-  double get sp => Screen()?.sp(this) ?? toDouble();
+  double fontScale(num fontSize) => _scale.fontScale(fontSize);
 }
