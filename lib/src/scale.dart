@@ -35,7 +35,11 @@ class Scale {
   final double textScaleFactor;
 
   /// Pixels scaled per device from design. Where One pixel on a 160px screen equals two pixels on a 320px screen.
+  /// Also and alias for scaleX
   double scale(num dimension) => dimension * size.width / config.width;
+
+  /// Pixels scaled per device from design. Where One pixel on a 160px screen equals two pixels on a 320px screen.
+  double scaleY(num dimension) => dimension * size.height / config.height;
 
   /// Relative to the font-size setting of the current device
   double fontScale(num fontSize) => config.allowFontScaling ? fontSize / textScaleFactor : fontSize.toDouble();
