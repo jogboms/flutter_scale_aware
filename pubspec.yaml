@@ -5,7 +5,7 @@ author: Jeremiah Ogbomo <jeremiahogbomo@gmail.com>
 homepage: https://github.com/jogboms/flutter_screen_aware
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -14,7 +14,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic: ^1.8.0+1
+  pedantic: ^1.11.0
   test_coverage:
     git:
-      url: https://github.com/jogboms/test-coverage.git
+      url: https://github.com/timsneath/test-coverage.git

@@ -5,17 +5,14 @@ import 'scale_config.dart';
 
 class ScaleAware extends InheritedWidget {
   const ScaleAware({
-    Key key,
+    Key? key,
     this.config = const ScaleConfig(),
-    @required Widget child,
-  })  : assert(child != null),
-        assert(config != null),
-        super(key: key, child: child);
+    required Widget child,
+  }) : super(key: key, child: child);
 
   final ScaleConfig config;
 
   static ScaleConfig of(BuildContext context) {
-    assert(context != null);
     final scaleAware = context.dependOnInheritedWidgetOfExactType<ScaleAware>();
     if (scaleAware != null) {
       return scaleAware.config;
