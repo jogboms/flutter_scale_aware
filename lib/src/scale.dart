@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:flutter/rendering.dart' show Size;
 import 'package:flutter/widgets.dart';
@@ -31,15 +33,20 @@ class Scale {
   /// Scale factor of font size on current device
   final double textScaleFactor;
 
+  double get _widthScale => size.width / config.width;
+
   /// Pixels scaled per device from design. Where One pixel on a 160px screen equals two pixels on a 320px screen.
   /// Also and alias for scaleX
-  double scale(num dimension) => dimension * size.width / config.width;
+  double scale(num dimension) => dimension * _widthScale;
+
+  double get _heightScale => size.height / config.height;
 
   /// Pixels scaled per device from design. Where One pixel on a 160px screen equals two pixels on a 320px screen.
-  double scaleY(num dimension) => dimension * size.height / config.height;
+  double scaleY(num dimension) => dimension * _heightScale;
 
   /// Relative to the font-size setting of the current device
-  double fontScale(num fontSize) => config.allowFontScaling ? fontSize / textScaleFactor : fontSize.toDouble();
+  double fontScale(num fontSize) =>
+      config.allowFontScaling ? (fontSize * min(_widthScale, _heightScale)) / textScaleFactor : fontSize.toDouble();
 
   @override
   String toString() => '$runtimeType('

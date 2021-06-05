@@ -122,6 +122,12 @@ void main() {
         expect(scale.fontScale(0.5), 0.25);
       });
 
+      test('with scaling on smaller screen and no text scale factor', () async {
+        final scale = Scale(config: ScaleConfig(width: 100, height: 200), size: Size(50, 100), textScaleFactor: 1);
+        expect(scale.fontScale(1), 0.5);
+        expect(scale.fontScale(0.5), 0.25);
+      });
+
       test('without scaling', () async {
         final scale = Scale(
           config: ScaleConfig(width: 100, height: 200, allowFontScaling: false),
