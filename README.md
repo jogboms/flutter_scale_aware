@@ -11,7 +11,9 @@ Create scale-based layout with a bit more ease. Powered by extensions.
 ```yaml
 dependencies:
   flutter_scale_aware: 
-    git: https://github.com/jogboms/flutter_scale_aware.git
+    git: 
+      url: https://github.com/jogboms/flutter_scale_aware.git
+      ref: scale-y
 ```
 
 ### ⚡️ Import
@@ -53,7 +55,7 @@ class DemoPage extends StatelessWidget {
       appBar: AppBar(title: Text(title)),
       body: Center(
         child: Container(
-          height: context.scale(2),
+          height: context.scaleY(2),
           width: context.scale(14.5),
           color: Color.red,
           child: Text("Hello World", style: TextStyle(fontSize: context.fontScale(16))),
